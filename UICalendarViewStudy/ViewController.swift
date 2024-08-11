@@ -5,9 +5,14 @@ import Then
 class ViewController: UIViewController {
 
     let calendarView = UICalendarView().then {
+        $0.locale = Locale(identifier: "ko_KR")
+    }
+    
+    let myButton = UIButton(type: .system).then {
+        $0.setTitle("완료", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .systemGray
-        $0.tintColor = .red
-        $0.layer.cornerRadius = 50
+        $0.layer.cornerRadius = 12
     }
     
     override func viewDidLoad() {
@@ -15,7 +20,19 @@ class ViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         setCalendarView()
+        setButton()
         setSelectionBehavior()
+    }
+    
+    func setButton() {
+        view.addSubview(myButton)
+        
+        myButton.translatesAutoresizingMaskIntoConstraints = false
+        myButton.snp.makeConstraints {
+            $0.top.equalTo(calendarView.snp.bottom).offset(20)
+            $0.leading.equalTo(view.snp.leading).offset(18)
+            $0.trailing.equalTo(view.snp.trailing).offset(-18)
+        }
     }
     
     func setCalendarView() {
@@ -29,8 +46,8 @@ class ViewController: UIViewController {
     }
     
     func setSelectionBehavior() {
-        let multiSelection = UICalendarSelectionSingleDate(delegate: self)
-        calendarView.selectionBehavior = multiSelection
+        let singleSelection = UICalendarSelectionSingleDate(delegate: self)
+        calendarView.selectionBehavior = singleSelection
     }
 }
 
