@@ -10,6 +10,8 @@ class ViewController: UIViewController {
         $0.wantsDateDecorations = true // 데코 꾸미기 (기본값 true)
     }
     
+    let responseDays = [1, 5, 15, 22, 25, 30]
+    
     let myButton = UIButton(type: .system).then {
         $0.isEnabled = false
         $0.setTitle("완료", for: .disabled)
@@ -31,30 +33,32 @@ class ViewController: UIViewController {
         setButton()
         setSelectionBehavior()
     }
-    
-    func setSelectionBehavior() {
-        let singleSelection = UICalendarSelectionSingleDate(delegate: self)
-        calendarView.selectionBehavior = singleSelection
-    }
 }
 
 // MARK: UICalendarViewDelegate 프로토콜 메소드
-// 특정 날짜에 대해 데코레이션 할 때 사용, 일정 불러오기 할 때 쓰면 될듯
 extension ViewController: UICalendarViewDelegate {
+    /// 해당 월의 캘린더를 불러올 때, 특정 날짜에 데코레이션해줄 수 있음
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
-        if let day = dateComponents.day, day == 25 {
-            return .image(UIImage(systemName: "gift.fill"), color: .systemRed, size: .small)
+        if let day = dateComponents.day, responseDays.contains(day) {
+            return .default()
         }
         return nil
     }
+    
+    /// 캘린더의 월이 바뀌면 동작함, 서버한테 요청하면 될듯
+    func calendarView(_ calendarView: UICalendarView, didChangeVisibleDateComponentsFrom previousDateComponents: DateComponents) {
+        print(calendarView.visibleDateComponents.year!)
+        print(calendarView.visibleDateComponents.month!)
+    }
 }
 
+
 // MARK: 하나만 선택했을 때, 어떤 동작 할래??
-// 여러 개 선택하고 싶으면 MultiDateDelegate
 extension ViewController: UICalendarSelectionSingleDateDelegate {
-    private func enableButton() {
-        myButton.isEnabled = true
-        myButton.backgroundColor = .systemOrange
+    /// 하나만 클릭될 수 있게, 만약 여러 개 선택하고 싶으면 MultiDateDelegate
+    func setSelectionBehavior() {
+        let singleSelection = UICalendarSelectionSingleDate(delegate: self)
+        calendarView.selectionBehavior = singleSelection
     }
     
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
@@ -64,6 +68,11 @@ extension ViewController: UICalendarSelectionSingleDateDelegate {
             let formattedDate = formatDate(date)
             print("선택된 날짜: \(formattedDate)")
         }
+    }
+    
+    private func enableButton() {
+        myButton.isEnabled = true
+        myButton.backgroundColor = .systemOrange
     }
 }
 
