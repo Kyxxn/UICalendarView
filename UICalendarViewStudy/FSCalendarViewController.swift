@@ -17,18 +17,12 @@ class FSCalendarViewController: UIViewController {
         $0.locale = Locale(identifier: "ko_KR")
         $0.backgroundColor = .systemBackground
         $0.scope = .month
-        
-        // 요일 텍스트 색상 지정
         $0.appearance.weekdayTextColor = .gray
-        
-        // 인접한 달의 날짜 숨기기
         $0.placeholderType = .none
+        $0.allowsMultipleSelection = true
 
         // 인접한 달의 헤더 텍스트 숨기기
         $0.appearance.headerMinimumDissolvedAlpha = 0.0
-        
-        // 멀티 선택 가능하도록 설정
-        $0.allowsMultipleSelection = true
     }
     
     let headerLabel = UILabel().then {
@@ -48,9 +42,10 @@ class FSCalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
         setupUI()
         setCalendar()
-        selectPresetDates() // 미리 선택된 날짜 설정
+//        selectPresetDates() // 미리 선택된 날짜 설정
     }
     
     func setCalendar() {
@@ -123,6 +118,21 @@ extension FSCalendarViewController: FSCalendarDelegateAppearance {
         if dateString == "2024-08-17" {
             print("Setting colors for 2024-08-17")
             return [.green, .purple]
+        }
+        
+        return nil
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+        let dateString = dateFormatter.string(from: date)
+        print("Event Color Check for Date: \(dateString)") // 로그 출력
+        
+        if dateString == "2024-08-07" {
+            return .systemRed
+        }
+        
+        if dateString == "2024-08-09" {
+            return .systemPink
         }
         
         return nil
