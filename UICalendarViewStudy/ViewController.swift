@@ -6,7 +6,6 @@ class ViewController: UIViewController {
     
     let calendarView = UICalendarView().then {
         $0.locale = Locale(identifier: "ko_KR")
-        $0.tintColor = .red
         $0.wantsDateDecorations = true // 데코 꾸미기 (기본값 true)
     }
     
@@ -14,7 +13,7 @@ class ViewController: UIViewController {
     
     let myButton = UIButton(type: .system).then {
         $0.isEnabled = false
-        $0.setTitle("완료", for: .disabled)
+        $0.setTitle("취소", for: .disabled)
         $0.setTitle("완료", for: .normal)
         $0.setTitleColor(.systemGray, for: .disabled)
         $0.setTitleColor(.white, for: .normal)
