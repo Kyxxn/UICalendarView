@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ViewController: UIViewController {
+class UICalendarViewController: UIViewController {
     
     let calendarView = UICalendarView().then {
         $0.locale = Locale(identifier: "ko_KR")
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: UICalendarViewDelegate 프로토콜 메소드
-extension ViewController: UICalendarViewDelegate {
+extension UICalendarViewController: UICalendarViewDelegate {
     /// 해당 월의 캘린더를 불러올 때, 특정 날짜에 데코레이션해줄 수 있음
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         if let day = dateComponents.day, responseDays.contains(day) {
@@ -59,7 +59,7 @@ extension ViewController: UICalendarViewDelegate {
 }
 
 // MARK: 하나만 선택했을 때, 어떤 동작 할래??
-extension ViewController: UICalendarSelectionSingleDateDelegate {
+extension UICalendarViewController: UICalendarSelectionSingleDateDelegate {
     
     /// 날짜가 하나 클릭 됐을 때 동작
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
@@ -77,7 +77,7 @@ extension ViewController: UICalendarSelectionSingleDateDelegate {
 /// multiDateSelection(_:canSelectDate:): 특정 날짜가 선택 가능한지 여부를 결정하는 메소드로, 선택을 제한할 수 있습니다.
 /// multiDateSelection(_:canDeselectDate:): 특정 날짜가 선택 해제 가능한지 여부를 결정하는 메소드로, 해제를 제한할 수 있습니다.
 
-extension ViewController: UICalendarSelectionMultiDateDelegate {
+extension UICalendarViewController: UICalendarSelectionMultiDateDelegate {
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
         if let date = dateComponents.date {
             // 이미 선택된 날짜가 있고, 그 날짜와 동일한 날짜가 다시 클릭되면 해제
@@ -106,7 +106,7 @@ extension ViewController: UICalendarSelectionMultiDateDelegate {
 }
 
 // MARK: 날짜만 뽑아내기
-extension ViewController {
+extension UICalendarViewController {
     func formatDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -116,7 +116,7 @@ extension ViewController {
 }
 
 // MARK: 레이아웃 설정
-extension ViewController {
+extension UICalendarViewController {
     func setCalendarView() {
         view.addSubview(calendarView)
         
@@ -144,7 +144,7 @@ extension ViewController {
 }
 
 // MARK: 버튼 활성/비활성 세팅
-extension ViewController {
+extension UICalendarViewController {
     private func enableButton() {
         myButton.isEnabled = true
         myButton.backgroundColor = .systemOrange
