@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E39021F2C799F3F007111A9 /* MultiSelectRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39021E2C799F3F007111A9 /* MultiSelectRangeViewController.swift */; };
 		0E58D78D2C6E575600BF141E /* DelegateAppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */; };
 		0E9BC86F2C6DBFC5001E5F38 /* FSCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */; };
 		0E9BC8722C6DBFDF001E5F38 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 0E9BC8712C6DBFDF001E5F38 /* FSCalendar */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E39021E2C799F3F007111A9 /* MultiSelectRangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectRangeViewController.swift; sourceTree = "<group>"; };
 		0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateAppearanceViewController.swift; sourceTree = "<group>"; };
 		0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarViewController.swift; sourceTree = "<group>"; };
 		0E9C6A232C68E55700624AA3 /* UICalendarViewStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UICalendarViewStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,10 +87,19 @@
 		0E39021D2C799D35007111A9 /* FSCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				0E3902202C79A041007111A9 /* MutliSelectRange */,
 				0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */,
 				0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */,
 			);
 			path = FSCalendar;
+			sourceTree = "<group>";
+		};
+		0E3902202C79A041007111A9 /* MutliSelectRange */ = {
+			isa = PBXGroup;
+			children = (
+				0E39021E2C799F3F007111A9 /* MultiSelectRangeViewController.swift */,
+			);
+			path = MutliSelectRange;
 			sourceTree = "<group>";
 		};
 		0E9C6A1A2C68E55700624AA3 = {
@@ -197,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E9C6A2B2C68E55700624AA3 /* UICalendarViewController.swift in Sources */,
+				0E39021F2C799F3F007111A9 /* MultiSelectRangeViewController.swift in Sources */,
 				0E58D78D2C6E575600BF141E /* DelegateAppearanceViewController.swift in Sources */,
 				0E9C6A272C68E55700624AA3 /* AppDelegate.swift in Sources */,
 				0E9C6A292C68E55700624AA3 /* SceneDelegate.swift in Sources */,
