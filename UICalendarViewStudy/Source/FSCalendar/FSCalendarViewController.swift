@@ -108,7 +108,7 @@ extension FSCalendarViewController: FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
         let dateString = dateFormatter.string(from: date)
-        print("Event Color Check for Date: \(dateString)") // 로그 출력
+        print("eventDefaultColorsFor: \(dateString)") // 로그 출력
         
         if dateString == "2024-08-20" || dateString == "2024-08-22" {
             print("Setting colors for 2024-08-20 or 2024-08-22")
@@ -125,7 +125,7 @@ extension FSCalendarViewController: FSCalendarDelegateAppearance {
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
         let dateString = dateFormatter.string(from: date)
-        print("Event Color Check for Date: \(dateString)") // 로그 출력
+        print("fillDefaultColorFor: \(dateString)") // 로그 출력
         
         if dateString == "2024-08-07" {
             return .systemRed

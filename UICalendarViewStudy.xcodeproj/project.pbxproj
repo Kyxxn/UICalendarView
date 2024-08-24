@@ -26,9 +26,9 @@
 		0E9C6A262C68E55700624AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E9C6A282C68E55700624AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0E9C6A2A2C68E55700624AA3 /* UICalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICalendarViewController.swift; sourceTree = "<group>"; };
-		0E9C6A2F2C68E55A00624AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0E9C6A2F2C68E55A00624AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = UICalendarViewStudy/Resource/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		0E9C6A322C68E55A00624AA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		0E9C6A342C68E55A00624AA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E9C6A342C68E55A00624AA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = UICalendarViewStudy/Resource/Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +45,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E3902192C799CC0007111A9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0E9C6A262C68E55700624AA3 /* AppDelegate.swift */,
+				0E9C6A282C68E55700624AA3 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0E39021A2C799CCB007111A9 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0E3902192C799CC0007111A9 /* App */,
+				0E39021D2C799D35007111A9 /* FSCalendar */,
+				0E39021C2C799D30007111A9 /* UICalendarView */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		0E39021B2C799CD0007111A9 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				0E9C6A2F2C68E55A00624AA3 /* Assets.xcassets */,
+				0E9C6A312C68E55A00624AA3 /* LaunchScreen.storyboard */,
+				0E9C6A342C68E55A00624AA3 /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		0E39021C2C799D30007111A9 /* UICalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				0E9C6A2A2C68E55700624AA3 /* UICalendarViewController.swift */,
+			);
+			path = UICalendarView;
+			sourceTree = "<group>";
+		};
+		0E39021D2C799D35007111A9 /* FSCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */,
+				0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */,
+			);
+			path = FSCalendar;
+			sourceTree = "<group>";
+		};
 		0E9C6A1A2C68E55700624AA3 = {
 			isa = PBXGroup;
 			children = (
@@ -64,14 +110,8 @@
 		0E9C6A252C68E55700624AA3 /* UICalendarViewStudy */ = {
 			isa = PBXGroup;
 			children = (
-				0E9C6A262C68E55700624AA3 /* AppDelegate.swift */,
-				0E9C6A282C68E55700624AA3 /* SceneDelegate.swift */,
-				0E9C6A2A2C68E55700624AA3 /* UICalendarViewController.swift */,
-				0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */,
-				0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */,
-				0E9C6A2F2C68E55A00624AA3 /* Assets.xcassets */,
-				0E9C6A312C68E55A00624AA3 /* LaunchScreen.storyboard */,
-				0E9C6A342C68E55A00624AA3 /* Info.plist */,
+				0E39021B2C799CD0007111A9 /* Resource */,
+				0E39021A2C799CCB007111A9 /* Source */,
 			);
 			path = UICalendarViewStudy;
 			sourceTree = "<group>";
@@ -173,7 +213,8 @@
 				0E9C6A322C68E55A00624AA3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
+			path = UICalendarViewStudy/Resource;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 
@@ -306,7 +347,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U5N99RCS73;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UICalendarViewStudy/Info.plist;
+				INFOPLIST_FILE = UICalendarViewStudy/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -333,7 +374,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U5N99RCS73;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UICalendarViewStudy/Info.plist;
+				INFOPLIST_FILE = UICalendarViewStudy/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
