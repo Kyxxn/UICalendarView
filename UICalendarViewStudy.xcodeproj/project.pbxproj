@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E39021F2C799F3F007111A9 /* MultiSelectRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39021E2C799F3F007111A9 /* MultiSelectRangeViewController.swift */; };
+		0E39021F2C799F3F007111A9 /* SelectedDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39021E2C799F3F007111A9 /* SelectedDateViewController.swift */; };
 		0E58D78D2C6E575600BF141E /* DelegateAppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */; };
+		0E8E333C2C7A34CA000EB2CE /* SelectedDateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E333B2C7A34CA000EB2CE /* SelectedDateType.swift */; };
+		0E8E333E2C7A353F000EB2CE /* SelectDatesCustomCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E333D2C7A353F000EB2CE /* SelectDatesCustomCalendarCell.swift */; };
 		0E9BC86F2C6DBFC5001E5F38 /* FSCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */; };
 		0E9BC8722C6DBFDF001E5F38 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 0E9BC8712C6DBFDF001E5F38 /* FSCalendar */; };
 		0E9C6A272C68E55700624AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9C6A262C68E55700624AA3 /* AppDelegate.swift */; };
@@ -21,8 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E39021E2C799F3F007111A9 /* MultiSelectRangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectRangeViewController.swift; sourceTree = "<group>"; };
+		0E39021E2C799F3F007111A9 /* SelectedDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateViewController.swift; sourceTree = "<group>"; };
 		0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateAppearanceViewController.swift; sourceTree = "<group>"; };
+		0E8E333B2C7A34CA000EB2CE /* SelectedDateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateType.swift; sourceTree = "<group>"; };
+		0E8E333D2C7A353F000EB2CE /* SelectDatesCustomCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDatesCustomCalendarCell.swift; sourceTree = "<group>"; };
 		0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarViewController.swift; sourceTree = "<group>"; };
 		0E9C6A232C68E55700624AA3 /* UICalendarViewStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UICalendarViewStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E9C6A262C68E55700624AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,7 +101,9 @@
 		0E3902202C79A041007111A9 /* MutliSelectRange */ = {
 			isa = PBXGroup;
 			children = (
-				0E39021E2C799F3F007111A9 /* MultiSelectRangeViewController.swift */,
+				0E39021E2C799F3F007111A9 /* SelectedDateViewController.swift */,
+				0E8E333B2C7A34CA000EB2CE /* SelectedDateType.swift */,
+				0E8E333D2C7A353F000EB2CE /* SelectDatesCustomCalendarCell.swift */,
 			);
 			path = MutliSelectRange;
 			sourceTree = "<group>";
@@ -208,8 +214,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E9C6A2B2C68E55700624AA3 /* UICalendarViewController.swift in Sources */,
-				0E39021F2C799F3F007111A9 /* MultiSelectRangeViewController.swift in Sources */,
+				0E39021F2C799F3F007111A9 /* SelectedDateViewController.swift in Sources */,
+				0E8E333C2C7A34CA000EB2CE /* SelectedDateType.swift in Sources */,
 				0E58D78D2C6E575600BF141E /* DelegateAppearanceViewController.swift in Sources */,
+				0E8E333E2C7A353F000EB2CE /* SelectDatesCustomCalendarCell.swift in Sources */,
 				0E9C6A272C68E55700624AA3 /* AppDelegate.swift in Sources */,
 				0E9C6A292C68E55700624AA3 /* SceneDelegate.swift in Sources */,
 				0E9BC86F2C6DBFC5001E5F38 /* FSCalendarViewController.swift in Sources */,
