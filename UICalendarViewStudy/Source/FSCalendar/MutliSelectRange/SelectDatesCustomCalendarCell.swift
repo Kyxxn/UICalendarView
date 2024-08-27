@@ -13,9 +13,9 @@ import Then
 // UICollectionViewCell 상속받고 있음
 class SelectDatesCustomCalendarCell: FSCalendarCell {
     
-    var circleBackImageView = UIImageView()
-    var leftRectBackImageView = UIImageView()
-    var rightRectBackImageView = UIImageView()
+    let circleBackImageView = UIImageView()
+    let leftRectBackImageView = UIImageView()
+    let rightRectBackImageView = UIImageView()
     
     override init!(frame: CGRect) {
         super.init(frame: frame)
@@ -31,7 +31,6 @@ class SelectDatesCustomCalendarCell: FSCalendarCell {
     
     
     func setConfigure() {
-        
         contentView.insertSubview(circleBackImageView, at: 0)
         contentView.insertSubview(leftRectBackImageView, at: 0)
         contentView.insertSubview(rightRectBackImageView, at: 0)
