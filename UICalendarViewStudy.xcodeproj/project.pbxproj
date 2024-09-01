@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E39021F2C799F3F007111A9 /* SelectedDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39021E2C799F3F007111A9 /* SelectedDateViewController.swift */; };
 		0E58D78D2C6E575600BF141E /* DelegateAppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */; };
+		0E8A2B3D2C84A23F00D45F47 /* ToduckCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8A2B3C2C84A23F00D45F47 /* ToduckCalendarViewController.swift */; };
 		0E8E333C2C7A34CA000EB2CE /* SelectedDateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E333B2C7A34CA000EB2CE /* SelectedDateType.swift */; };
 		0E8E333E2C7A353F000EB2CE /* SelectDatesCustomCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E333D2C7A353F000EB2CE /* SelectDatesCustomCalendarCell.swift */; };
 		0E9BC86F2C6DBFC5001E5F38 /* FSCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		0E39021E2C799F3F007111A9 /* SelectedDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateViewController.swift; sourceTree = "<group>"; };
 		0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateAppearanceViewController.swift; sourceTree = "<group>"; };
+		0E8A2B3C2C84A23F00D45F47 /* ToduckCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToduckCalendarViewController.swift; sourceTree = "<group>"; };
 		0E8E333B2C7A34CA000EB2CE /* SelectedDateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateType.swift; sourceTree = "<group>"; };
 		0E8E333D2C7A353F000EB2CE /* SelectDatesCustomCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDatesCustomCalendarCell.swift; sourceTree = "<group>"; };
 		0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCalendarViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				0E3902202C79A041007111A9 /* MutliSelectRange */,
 				0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */,
 				0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */,
+				0E8A2B3C2C84A23F00D45F47 /* ToduckCalendarViewController.swift */,
 			);
 			path = FSCalendar;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				0E8E333E2C7A353F000EB2CE /* SelectDatesCustomCalendarCell.swift in Sources */,
 				0E9C6A272C68E55700624AA3 /* AppDelegate.swift in Sources */,
 				0E9C6A292C68E55700624AA3 /* SceneDelegate.swift in Sources */,
+				0E8A2B3D2C84A23F00D45F47 /* ToduckCalendarViewController.swift in Sources */,
 				0E9BC86F2C6DBFC5001E5F38 /* FSCalendarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
