@@ -17,7 +17,10 @@ final class SplitCalendarViewController: UIViewController {
     private var contentViewTopConstraint: Constraint?
     private let contentViewTopExpanded: CGFloat = 0 // contentView가 화면을 가득 채울 때
     private var contentViewTopCollapsed: CGFloat {
-        return view.bounds.height / 2 // 초기 위치 (화면의 절반)
+        return view.bounds.height / 2 // 화면의 절반
+    }
+    private var contentViewTopHidden: CGFloat {
+        return view.bounds.height // 화면 밖으로 나가는 상태
     }
     private var panGesture: UIPanGestureRecognizer!
 
@@ -101,35 +104,43 @@ final class SplitCalendarViewController: UIViewController {
 
     private func setupGesture() {
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-        panGesture.delegate = self
+        
         view.addGestureRecognizer(panGesture)
     }
 
     // MARK: - Gesture Handling
 
+//    화면을 꽉 채우는 상태, 반반으로 나뉘는 중간 상태, 그리고 화면에서 사라지는 상태로 contentView를 관리해야 됨
+//    + contentView가 내려가면 캘린더의 날짜 셀의 높이도 맞춰서 길어져야 함
+//
+//        1.    화면을 꽉 채우는 상태
+//        2.    화면의 절반을 차지하는 중간 상태
+//        3.    화면에서 사라지는 상태
+//    handlePanGesture의 로직이 잘못된 거 같음
+//    화면을 다 덮는 게 안되고 있음
+    
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view).y
         let velocity = gesture.velocity(in: view).y
 
         switch gesture.state {
         case .changed:
-            // contentView의 상단 제약 조건을 업데이트
             var newTop = (contentViewTopConstraint?.layoutConstraints.first?.constant ?? contentViewTopCollapsed) + translation
-
-            // newTop 값을 제한
-            newTop = max(contentViewTopExpanded, min(contentViewTopCollapsed, newTop))
-
+            newTop = min(contentViewTopCollapsed, newTop)
             contentViewTopConstraint?.update(offset: newTop)
             gesture.setTranslation(.zero, in: view)
             view.layoutIfNeeded()
 
+            // Reload the calendar to update cell sizes
+            calendar.reloadData()
+            calendar.setNeedsLayout()
+            calendar.layoutIfNeeded()
         case .ended, .cancelled:
-            // 제스처 종료 시 위치와 속도를 기반으로 애니메이션 처리
             let currentTop = contentViewTopConstraint?.layoutConstraints.first?.constant ?? contentViewTopCollapsed
             let shouldExpand: Bool
 
             if abs(velocity) > 500 {
-                shouldExpand = velocity < 0 // 위로 스와이프하면 contentView를 확장
+                shouldExpand = velocity < 0
             } else {
                 let middle = (contentViewTopCollapsed + contentViewTopExpanded) / 2
                 shouldExpand = currentTop < middle
@@ -140,6 +151,8 @@ final class SplitCalendarViewController: UIViewController {
             UIView.animate(withDuration: 0.3, animations: {
                 self.contentViewTopConstraint?.update(offset: targetTop)
                 self.view.layoutIfNeeded()
+                // Reload the calendar during animation
+                self.calendar.reloadData()
             })
 
         default:
@@ -151,8 +164,11 @@ final class SplitCalendarViewController: UIViewController {
 extension SplitCalendarViewController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer == panGesture {
-            // 테이블 뷰의 스크롤 위치가 최상단일 때만 제스처를 인식
-            return scheduleTableView.contentOffset.y <= 0
+            let location = gestureRecognizer.location(in: contentView)
+            // scheduleTableView 영역에서 제스처를 인식하지 않도록 함
+            if scheduleTableView.frame.contains(location) && scheduleTableView.contentOffset.y > 0 {
+                return false
+            }
         }
         return true
     }
@@ -168,7 +184,7 @@ extension SplitCalendarViewController: UITableViewDelegate {
 
 extension SplitCalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        20 // 데이터를 늘려 스크롤이 가능하도록 함
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
