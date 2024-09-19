@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //        window?.rootViewController = UICalendarViewController()
         //        window?.rootViewController = FSCalendarViewController()
         //        window?.rootViewController = DelegateAppearanceViewController()
-        window?.rootViewController = SelectedDateViewController()
+        window?.rootViewController = SplitCalendarViewController()
         window?.makeKeyAndVisible()
     }
     

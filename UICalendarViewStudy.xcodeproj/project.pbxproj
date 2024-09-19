@@ -21,6 +21,7 @@
 		0E9C6A332C68E55A00624AA3 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0E9C6A322C68E55A00624AA3 /* Base */; };
 		0E9C6A3C2C68F1D300624AA3 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 0E9C6A3B2C68F1D300624AA3 /* Then */; };
 		0E9C6A442C68F23E00624AA3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0E9C6A432C68F23E00624AA3 /* SnapKit */; };
+		0ED5F6002C9BF8C700CAEC9E /* SplitCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED5F5FF2C9BF8BB00CAEC9E /* SplitCalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		0E9C6A2F2C68E55A00624AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = UICalendarViewStudy/Resource/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		0E9C6A322C68E55A00624AA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E9C6A342C68E55A00624AA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = UICalendarViewStudy/Resource/Info.plist; sourceTree = SOURCE_ROOT; };
+		0ED5F5FF2C9BF8BB00CAEC9E /* SplitCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitCalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				0E3902202C79A041007111A9 /* MutliSelectRange */,
+				0ED5F5FF2C9BF8BB00CAEC9E /* SplitCalendarViewController.swift */,
 				0E58D78C2C6E575600BF141E /* DelegateAppearanceViewController.swift */,
 				0E9BC86E2C6DBFC5001E5F38 /* FSCalendarViewController.swift */,
 				0E8A2B3C2C84A23F00D45F47 /* ToduckCalendarViewController.swift */,
@@ -217,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E9C6A2B2C68E55700624AA3 /* UICalendarViewController.swift in Sources */,
+				0ED5F6002C9BF8C700CAEC9E /* SplitCalendarViewController.swift in Sources */,
 				0E39021F2C799F3F007111A9 /* SelectedDateViewController.swift in Sources */,
 				0E8E333C2C7A34CA000EB2CE /* SelectedDateType.swift in Sources */,
 				0E58D78D2C6E575600BF141E /* DelegateAppearanceViewController.swift in Sources */,
