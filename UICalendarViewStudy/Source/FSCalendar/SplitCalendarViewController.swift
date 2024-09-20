@@ -160,7 +160,6 @@ final class SplitCalendarViewController: UIViewController {
         case .ended, .cancelled:
             let currentTop = contentViewTopConstraint?.layoutConstraints.first?.constant ?? contentViewTopCollapsed
             let shouldExpand: Bool
-            let shouldCollapse: Bool
             let shouldHide: Bool
 
             // 속도에 따른 상태 결정
@@ -194,23 +193,6 @@ final class SplitCalendarViewController: UIViewController {
         default:
             break
         }
-    }
-}
-
-extension SplitCalendarViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if gestureRecognizer == panGesture {
-            let location = gestureRecognizer.location(in: contentView)
-            // scheduleTableView 영역에서 제스처를 인식하지 않도록 함
-            if scheduleTableView.frame.contains(location) && scheduleTableView.contentOffset.y > 0 {
-                return false
-            }
-        }
-        return true
-    }
-
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return false
     }
 }
 
