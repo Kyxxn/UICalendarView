@@ -13,7 +13,7 @@ import Then
 final class SplitCalendarViewController: UIViewController {
 
     // MARK: - Properties
-
+    
     private var contentViewTopConstraint: Constraint?
     private let contentViewTopExpanded: CGFloat = 0 // contentView가 화면을 가득 채울 때
     private var contentViewTopCollapsed: CGFloat {
@@ -25,6 +25,12 @@ final class SplitCalendarViewController: UIViewController {
     private var panGesture: UIPanGestureRecognizer!
 
     // MARK: - UI Components
+    
+    let nabbar = UILabel().then {
+        $0.text = "네브바"
+        $0.textAlignment = .center
+        $0.backgroundColor = .black
+    }
 
     let calendar = FSCalendar().then {
         $0.today = nil
@@ -65,6 +71,7 @@ final class SplitCalendarViewController: UIViewController {
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
 
+        view.addSubview(nabbar)
         view.addSubview(calendar)
         view.addSubview(contentView)
         contentView.addSubview(separatorView)
@@ -73,13 +80,21 @@ final class SplitCalendarViewController: UIViewController {
     }
 
     private func setupLayout() {
+        nabbar.snp.makeConstraints {
+            $0.top.equalTo(view.snp.top).offset(15)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(30)
+        }
+        
         calendar.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalTo(nabbar.snp.bottom) // nabbar 아래에 위치
+            make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(contentView.snp.top) // calendar의 하단을 contentView의 상단에 연결
         }
 
         contentView.snp.makeConstraints { make in
-            self.contentViewTopConstraint = make.top.equalTo(view.snp.centerY).constraint // 초기 위치를 화면의 절반으로 설정
+            // 초기 위치를 절반으로 설정하지만, 팬 제스처로 상단까지 이동 가능
+            self.contentViewTopConstraint = make.top.equalToSuperview().inset(view.bounds.height / 2).constraint
             make.leading.trailing.bottom.equalToSuperview()
         }
 
@@ -104,7 +119,6 @@ final class SplitCalendarViewController: UIViewController {
 
     private func setupGesture() {
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-        
         view.addGestureRecognizer(panGesture)
     }
 
@@ -123,35 +137,57 @@ final class SplitCalendarViewController: UIViewController {
         let translation = gesture.translation(in: view).y
         let velocity = gesture.velocity(in: view).y
 
+        // 1. 상태별로 위치 설정
+        let contentViewTopExpanded = nabbar.frame.height + 15 // nabbar 바로 아래
+        let contentViewTopCollapsed = view.bounds.height / 2 // 화면의 절반
+        let contentViewTopHidden = view.bounds.height // 화면 밖으로 사라지는 상태
+
         switch gesture.state {
         case .changed:
+            // 2. 변경된 위치 계산: 화면 상단에서 하단까지 범위 설정
             var newTop = (contentViewTopConstraint?.layoutConstraints.first?.constant ?? contentViewTopCollapsed) + translation
-            newTop = min(contentViewTopCollapsed, newTop)
+            // newTop 값을 상단 (contentViewTopExpanded)과 하단 (contentViewTopHidden) 사이로 제한
+            newTop = max(contentViewTopExpanded, min(contentViewTopHidden, newTop))
             contentViewTopConstraint?.update(offset: newTop)
             gesture.setTranslation(.zero, in: view)
             view.layoutIfNeeded()
 
-            // Reload the calendar to update cell sizes
+            // 캘린더 크기 업데이트
             calendar.reloadData()
             calendar.setNeedsLayout()
             calendar.layoutIfNeeded()
+
         case .ended, .cancelled:
             let currentTop = contentViewTopConstraint?.layoutConstraints.first?.constant ?? contentViewTopCollapsed
             let shouldExpand: Bool
+            let shouldCollapse: Bool
+            let shouldHide: Bool
 
+            // 속도에 따른 상태 결정
             if abs(velocity) > 500 {
-                shouldExpand = velocity < 0
+                shouldExpand = velocity < 0 // 위로 빠르게 스와이프하면 확장
+                shouldHide = velocity > 0 && currentTop > contentViewTopCollapsed + 100 // 아래로 빠르게 스와이프하면 숨김
             } else {
-                let middle = (contentViewTopCollapsed + contentViewTopExpanded) / 2
-                shouldExpand = currentTop < middle
+                let middlePosition = (contentViewTopCollapsed + contentViewTopExpanded) / 2
+                shouldExpand = currentTop < middlePosition // 중간보다 위에 있으면 확장
+                shouldHide = currentTop >= contentViewTopHidden - 100 // 하단 근처에 있으면 숨김
             }
 
-            let targetTop = shouldExpand ? contentViewTopExpanded : contentViewTopCollapsed
+            // 상태에 따른 목표 위치 설정
+            let targetTop: CGFloat
+            if shouldExpand {
+                targetTop = contentViewTopExpanded // 네브바 바로 아래까지 확장
+            } else if shouldHide {
+                targetTop = contentViewTopHidden // 화면 아래로 숨김
+            } else {
+                targetTop = contentViewTopCollapsed // 반반 위치
+            }
 
+            // 애니메이션 적용
             UIView.animate(withDuration: 0.3, animations: {
                 self.contentViewTopConstraint?.update(offset: targetTop)
                 self.view.layoutIfNeeded()
-                // Reload the calendar during animation
+                // 애니메이션 중 캘린더 업데이트
                 self.calendar.reloadData()
             })
 
